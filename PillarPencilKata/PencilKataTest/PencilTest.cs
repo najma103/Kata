@@ -2,6 +2,8 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PillarPencilKata;
+
 
 namespace PencilKataTest
 {
@@ -18,23 +20,7 @@ namespace PencilKataTest
             //
         }
 
-        private TestContext testContextInstance;
 
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
 
         #region Additional test attributes
         //
@@ -59,11 +45,15 @@ namespace PencilKataTest
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TextWriterTest()
         {
             //
             // TODO: Add test logic here
             //
+            Pencil pencil = new Pencil();
+            Assert.AreEqual("test", pencil.TextWriter("test"));
+
+
         }
     }
 }
