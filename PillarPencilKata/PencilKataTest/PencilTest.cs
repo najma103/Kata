@@ -47,13 +47,11 @@ namespace PencilKataTest
         [TestMethod]
         public void TextWriterTest()
         {
-            //
-            // TODO: Add test logic here
-            //
             Pencil pencil = new Pencil();
-            Assert.AreEqual("test", pencil.TextWriter("test"));
-
-
+            string test = "She sells sea shells";
+            string test2 = "She sells sea shells down by the sea shore";
+            Assert.AreEqual(test, pencil.TextWriter("She sells sea shells"));
+            Assert.AreEqual(test2, pencil.TextWriter(" down by the sea shore"));
         }
     }
 }
