@@ -40,11 +40,11 @@ namespace PillarPencilKata
         // constructiors
         public Pencil()
         {
-            pencilDurability = 40000;
+            pencilDurability = 1000;
             initialPencilPoints = pencilDurability;
-            eraserDurability = 10000;
-            pencilLength = 10;
-            sb = new StringBuilder("", 10000);
+            eraserDurability = 100;
+            pencilLength = 5;
+            sb = new StringBuilder("", 1000);
         }
         public Pencil(int pencilDurability, int eraserDurability, int pencilLength)
         {
@@ -53,7 +53,7 @@ namespace PillarPencilKata
             this.eraserDurability = eraserDurability;
             this.pencilLength = pencilLength;
 
-            sb = new StringBuilder("", 10000);
+            sb = new StringBuilder("", 1000);
         }
 
         public string TextWriter(string str)
@@ -74,7 +74,7 @@ namespace PillarPencilKata
             return false;
         }
 
-        public string EraseWordFromPaper(string str)
+        public string EraseWords(string str)
         {
             string newWords = "";
             string blankSpaces = ReturnWhiteSpaces(str.Length);
@@ -101,7 +101,8 @@ namespace PillarPencilKata
             }
             else
             {
-                strArray[Array.LastIndexOf(strArray, str)] = blankSpaces;
+                //strArray[Array.LastIndexOf(strArray, str)] = blankSpaces;
+                strArray[indexOf] = blankSpaces;
                 sb.Clear();
 
                 newWords = string.Join(" ", strArray);
