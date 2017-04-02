@@ -84,5 +84,17 @@ namespace PencilKataTest
             Assert.AreEqual(expected, P2.EraseWords("would"));
             Assert.AreEqual(0, P2.EraserDurability);
         }
+
+        [TestMethod]
+        public void WhenPencilDoesNotHaveEnoughPointsItShouldNotWrite()
+        {
+            //pencil durability, eraser durability and pencil length
+            P2 = new Pencil(30, 4, 2);
+            string str = P2.TextWriter("How much wood would a woodchuck chuck");
+            string expected = "How much wood w     a woodchuck chuck";
+
+            Assert.AreEqual(expected, P2.EraseWords("would"));
+            Assert.AreEqual(0, P2.EraserDurability);
+        }
     }
 }

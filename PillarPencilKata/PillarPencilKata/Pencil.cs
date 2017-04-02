@@ -145,5 +145,11 @@ namespace PillarPencilKata
             return newSpaces;
         }
 
+        public override string ToString()
+        {
+            return "[" + sb + "]";
+        }
+
+
     }
 }
