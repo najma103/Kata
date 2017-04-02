@@ -37,7 +37,7 @@ namespace PillarPencilKata
             set { eraserDurability = value; }
         }
 
-
+        // constructiors
         public Pencil()
         {
             pencilDurability = 40000;
@@ -72,6 +72,24 @@ namespace PillarPencilKata
             }
             
             return false;
+        }
+
+        public string EraseWordFromPaper(string str)
+        {
+            string blankSpaces = ReturnWhiteSpaces(str.Length);
+            sb.Replace(str, blankSpaces);
+            return sb.ToString();
+        }
+
+        public string ReturnWhiteSpaces(int spaceLength)
+        {
+            string newSpaces = "";
+            for (int i = 0; i < spaceLength; i++)
+            {
+                newSpaces += " ";
+            }
+
+            return newSpaces;
         }
 
     }

@@ -71,7 +71,17 @@ namespace PencilKataTest
 
             pencil.PencilLength = 5;
             Assert.AreEqual(true, pencil.SharpenPencil());
+            Assert.AreEqual(4, pencil.PencilLength);
             Assert.AreEqual(40000, pencil.PencilDurability);
+        }
+
+        [TestMethod]
+        public void EraseWordsAndReplaceWithWhiteSpaces()
+        {
+            string str = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?";
+            string test3 = pencil.TextWriter(str);
+            string returnedStr = "How much wood would a woodchuck chuck if a woodchuck could       wood?";
+            Assert.AreEqual(returnedStr, pencil.EraseWordFromPaper("chuck"));
         }
     }
 }
