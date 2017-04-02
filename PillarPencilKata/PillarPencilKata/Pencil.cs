@@ -77,7 +77,14 @@ namespace PillarPencilKata
         public string EraseWordFromPaper(string str)
         {
             string blankSpaces = ReturnWhiteSpaces(str.Length);
-            sb.Replace(str, blankSpaces);
+            string words = sb.ToString();
+            string[] strArray = new string[sb.Length];
+            strArray = words.Split(' ');
+            strArray[Array.LastIndexOf(strArray, str)] = blankSpaces;
+            sb.Clear();
+
+            string newWords = string.Join(" ", strArray);
+            sb.Append(newWords);
             return sb.ToString();
         }
 
