@@ -13,14 +13,23 @@ namespace PencilKataTest
     [TestClass]
     public class PencilTest
     {
+        //instantiating class 
+        Pencil pencil; 
         public PencilTest()
         {
             //
             // TODO: Add constructor logic here
             //
+            
         }
-
-
+        [TestInitialize]
+        public void SetUp()
+        {
+            int pencilDurability = 40000;
+            int eraserDurability = 20000;
+            int pencilLength = 10;
+            pencil = new Pencil(pencilDurability, eraserDurability, pencilLength);
+        }
 
         #region Additional test attributes
         //
@@ -47,11 +56,22 @@ namespace PencilKataTest
         [TestMethod]
         public void TextWriterTest()
         {
-            Pencil pencil = new Pencil();
+            //Pencil pencil = new Pencil();
             string test = "She sells sea shells";
             string test2 = "She sells sea shells down by the sea shore";
             Assert.AreEqual(test, pencil.TextWriter("She sells sea shells"));
             Assert.AreEqual(test2, pencil.TextWriter(" down by the sea shore"));
+        }
+
+        [TestMethod]
+        public void SharpenPencilIfLengthIsGreaterThanZero()
+        {
+            pencil.PencilLength = 0;
+            Assert.AreEqual(false, pencil.SharpenPencil());
+
+            pencil.PencilLength = 5;
+            Assert.AreEqual(true, pencil.SharpenPencil());
+            Assert.AreEqual(40000, pencil.PencilDurability);
         }
     }
 }
