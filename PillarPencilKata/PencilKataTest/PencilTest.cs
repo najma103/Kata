@@ -12,7 +12,7 @@ namespace PencilKataTest
     public class PencilTest
     {
         //instantiating class 
-        Pencil pencil; 
+        private Pencil pencil, P2;
         public PencilTest()
         {
 
@@ -65,10 +65,13 @@ namespace PencilKataTest
         [TestMethod]
         public void TestEraserPointDegradation()
         {
-            string str = pencil.TextWriter("This is a text");
+            //pencil durability, eraser durability and pencil length
+            P2 = new Pencil(100, 5, 2);
+            string str = P2.TextWriter("This is a text");
             string expected = "This is a     ";
 
-            Assert.AreEqual(expected, pencil.EraseWords("text"));
+            Assert.AreEqual(expected, P2.EraseWords("text"));
+            Assert.AreEqual(1, P2.EraserDurability);
         }
     }
 }
