@@ -89,12 +89,12 @@ namespace PencilKataTest
         public void WhenPencilDoesNotHaveEnoughPointsItShouldNotWrite()
         {
             //pencil durability, eraser durability and pencil length
-            P2 = new Pencil(30, 4, 2);
-            string str = P2.TextWriter("How much wood would a woodchuck chuck");
-            string expected = "How much wood w     a woodchuck chuck";
+            P2 = new Pencil(26, 4, 2);
+            string str = "How much wood would a woodchuck chuck";
+            string expected = "How much wood would a wood           ";
 
-            Assert.AreEqual(expected, P2.EraseWords("would"));
-            Assert.AreEqual(0, P2.EraserDurability);
+            Assert.AreEqual(expected, P2.TextWriter(str));
+            Assert.AreEqual(0, P2.PencilDurability);
         }
     }
 }

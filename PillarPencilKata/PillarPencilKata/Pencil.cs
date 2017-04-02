@@ -58,7 +58,19 @@ namespace PillarPencilKata
 
         public string TextWriter(string str)
         {
-            sb.Append(str);
+            char[] chars = new char[str.Length];
+            chars = str.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (pencilDurability > 0)
+                {
+                    sb.Append(chars[i]);
+                    pencilDurability--;
+                } else
+                {
+                    sb.Append(' ');
+                }
+            }
             return sb.ToString(); 
         }
 
