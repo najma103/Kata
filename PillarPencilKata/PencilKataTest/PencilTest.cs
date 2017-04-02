@@ -56,6 +56,10 @@ namespace PencilKataTest
             string test3 = pencil.TextWriter(str);
             string returnedStr = "How much wood would a woodchuck chuck if a woodchuck could       wood?";
             Assert.AreEqual(returnedStr, pencil.EraseWordFromPaper("chuck"));
+
+            // if removed again it should remove the next matching string"
+            string actual = "How much wood would a woodchuck chuck if a wood      could       wood?";
+            Assert.AreEqual(actual, pencil.EraseWordFromPaper("chuck"));
         }
     }
 }

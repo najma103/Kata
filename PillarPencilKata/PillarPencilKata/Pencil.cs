@@ -76,19 +76,56 @@ namespace PillarPencilKata
 
         public string EraseWordFromPaper(string str)
         {
+            string newWords = "";
             string blankSpaces = ReturnWhiteSpaces(str.Length);
             string words = sb.ToString();
             string[] strArray = new string[sb.Length];
             strArray = words.Split(' ');
-            strArray[Array.LastIndexOf(strArray, str)] = blankSpaces;
-            sb.Clear();
 
-            string newWords = string.Join(" ", strArray);
-            sb.Append(newWords);
-            return sb.ToString();
+            // index of the word
+            int indexOf = IndexOfString(strArray, str);
+            string word = strArray[indexOf];
+            if(word.Length > str.Length)
+            {
+                char[] charArr = word.ToCharArray();
+                StringBuilder sb2 = new StringBuilder(word);
+                sb2.Replace(str, "");
+                strArray[indexOf] = sb2.ToString() + blankSpaces;
+
+                sb.Clear();
+                newWords = string.Join(" ", strArray);
+                sb.Append(newWords);
+                return sb.ToString();
+
+
+            }
+            else
+            {
+                strArray[Array.LastIndexOf(strArray, str)] = blankSpaces;
+                sb.Clear();
+
+                newWords = string.Join(" ", strArray);
+                sb.Append(newWords);
+                return sb.ToString();
+            }
+
+
         }
 
-        public string ReturnWhiteSpaces(int spaceLength)
+        private int IndexOfString(string[] strArr, string str)
+        {
+            int lastIndex = strArr.Length - 1;
+            for (int i = lastIndex; i >= 0; i--)
+            {
+                if (strArr[i].Contains(str))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private string ReturnWhiteSpaces(int spaceLength)
         {
             string newSpaces = "";
             for (int i = 0; i < spaceLength; i++)
