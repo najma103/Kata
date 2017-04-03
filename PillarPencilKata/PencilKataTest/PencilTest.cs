@@ -13,10 +13,6 @@ namespace PencilKataTest
     {
         //instantiating class 
         private Pencil pencil, P2;
-        public PencilTest()
-        {
-
-        }
 
         [TestInitialize]
         public void SetUp()
