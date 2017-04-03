@@ -76,6 +76,10 @@ namespace PillarPencilKata
                             sb.Append(' ');
                         }
                     }
+                    else if (char.IsWhiteSpace(chars[i]))
+                    {
+                        sb.Append(chars[i]);
+                    }
                     else
                     {
                         sb.Append(chars[i]);
