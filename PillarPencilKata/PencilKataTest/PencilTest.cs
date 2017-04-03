@@ -12,7 +12,7 @@ namespace PencilKataTest
     public class PencilTest
     {
         //instantiating class 
-        private Pencil pencil, P2;
+        private Pencil pencil, P2, P3;
 
         [TestInitialize]
         public void SetUp()
@@ -88,9 +88,11 @@ namespace PencilKataTest
             P2 = new Pencil(22, 4, 2);
             string str = "How much wood would a woodchuck chuck";
             string expected = "How much wood would a wood           ";
-
             Assert.AreEqual(expected, P2.TextWriter(str));
             Assert.AreEqual(0, P2.PencilDurability);
+            // creating new object with only 4 point durability
+            P3 = new Pencil(4, 4, 2);
+            Assert.AreEqual("Tex ", P3.TextWriter("Text"));
         }
     }
 }
