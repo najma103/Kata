@@ -80,6 +80,14 @@ namespace PencilKataTest
             Assert.AreEqual(expected, P2.EraseWords("would"));
             Assert.AreEqual(0, P2.EraserDurability);
         }
+        [TestMethod]
+        public void EraserShouldEraseTextInTheOpositeOrder()
+        {
+            P2 = new Pencil(15, 3, 1);
+            string str = P2.TextWriter("Buffalo Bill");
+            string expected = "Buffalo B   ";
+            Assert.AreEqual(expected, P2.EraseWords("Bill"));
+        }
 
         [TestMethod]
         public void WhenPencilDoesNotHaveEnoughPointsItShouldNotWrite()
