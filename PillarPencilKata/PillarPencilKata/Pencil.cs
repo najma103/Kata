@@ -64,9 +64,25 @@ namespace PillarPencilKata
             {
                 if (pencilDurability > 0)
                 {
-                    sb.Append(chars[i]);
-                    pencilDurability--;
-                } else
+                    if (char.IsUpper(chars[i]))
+                    {
+                        if (pencilDurability >= 0)
+                        {
+                            sb.Append(chars[i]);
+                            pencilDurability = pencilDurability - 2;// 2 points for upper case letter
+                        }
+                        else
+                        {
+                            sb.Append(' ');
+                        }
+                    }
+                    else
+                    {
+                        sb.Append(chars[i]);
+                        pencilDurability = pencilDurability - 1;
+                    }
+                }
+                else
                 {
                     sb.Append(' ');
                 }
@@ -159,7 +175,7 @@ namespace PillarPencilKata
 
         public override string ToString()
         {
-            return "[" + sb + "]";
+            return "/" + sb + "/";
         }
 
 
