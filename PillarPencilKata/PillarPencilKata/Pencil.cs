@@ -94,6 +94,9 @@ namespace PillarPencilKata
             return sb.ToString(); 
         }
 
+
+
+
         public bool SharpenPencil()
         {
             if (pencilLength > 0)
@@ -109,49 +112,48 @@ namespace PillarPencilKata
         public string EraseWords(string str)
         {
             string newWords = "";
+            string word = "";
             string blankSpaces = ReturnWhiteSpaces(str.Length);
+
             string words = sb.ToString();
             string[] strArray = new string[sb.Length];
             strArray = words.Split(' ');
 
-            // index of the word
             int indexOf = IndexOfString(strArray, str);
-            string word = strArray[indexOf];
-
-            if (eraserDurability >= str.Length)
+            if (indexOf > 0)
             {
+                word = strArray[indexOf];
+            } 
+
+            char[] charArr = word.ToCharArray();
+            StringBuilder sb2 = new StringBuilder(word);
+
+            if ((eraserDurability >= str.Length) && (word.Length > str.Length))
+            {
+                sb2.Replace(str, "");
+                strArray[indexOf] = sb2.ToString() + blankSpaces;
                 eraserDurability = eraserDurability - str.Length;
-                if (word.Length > str.Length)
-                {
-                    char[] charArr = word.ToCharArray();
-                    StringBuilder sb2 = new StringBuilder(word);
-                    sb2.Replace(str, "");
-                    strArray[indexOf] = sb2.ToString() + blankSpaces;
 
-                    sb.Clear();
-                    newWords = string.Join(" ", strArray);
-                    sb.Append(newWords);
-                    return sb.ToString();
-                }
-                else
-                {
-                    //strArray[Array.LastIndexOf(strArray, str)] = blankSpaces;
-                    strArray[indexOf] = blankSpaces;
-                    sb.Clear();
-
-                    newWords = string.Join(" ", strArray);
-                    sb.Append(newWords);
-                    return sb.ToString();
-                }
-            }
+                sb.Clear();
+                newWords = string.Join(" ", strArray);
+                sb.Append(newWords);
+                return sb.ToString();
+            } 
             else
             {
-                // come back to this. 
-                return sb.ToString();
+                for (int i = charArr.Length; i > 0; i--)
+                {
+                    if (eraserDurability > 0)
+                    {
+                        charArr[i] = ' ';
+                        eraserDurability = eraserDurability - 1;
+                    }
+                }
             }
-
-
+           
         }
+
+
 
         private int IndexOfString(string[] strArr, string str)
         {
@@ -184,4 +186,9 @@ namespace PillarPencilKata
 
 
     }
+
+
+
+
+
 }
