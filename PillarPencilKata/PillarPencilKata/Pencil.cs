@@ -152,9 +152,6 @@ namespace PillarPencilKata
             }
            
         }
-
-
-
         private int IndexOfString(string[] strArr, string str)
         {
             int lastIndex = strArr.Length - 1;
